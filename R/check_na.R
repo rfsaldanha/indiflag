@@ -11,7 +11,7 @@ check_na <- function(x) {
     result <- list(
       test = "na",
       flag = "yellow",
-      message = glue::glue("{sum(res)} value(s) are NAs")
+      message = glue::glue("{sum(res)} NA value(s)")
     )
   } else {
     result <- list(
