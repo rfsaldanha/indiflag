@@ -21,4 +21,12 @@ test_that("basic_checks works", {
       v_min = 0,
       v_max = 100
     )
+
+  distance_checks(x = example, keys = c("id", "name"))
+
+  teste <- example |>
+    dplyr::group_by(id, name) |>
+    dplyr::group_split()
+
+  tidyr::expand_grid(teste)
 })
