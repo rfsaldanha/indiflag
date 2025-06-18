@@ -7,7 +7,8 @@ basic_checks <- function(x, keys, value_var) {
         check_na(x = {{ value_var }}),
         check_sequence(x = {{ value_var }}),
         check_negative(x = {{ value_var }}),
-        check_entropy(x = {{ value_var }})
+        check_entropy(x = {{ value_var }}),
+        check_outlier(x = {{ value_var }})
       )
     ) |>
     tidyr::unnest_wider(tests)

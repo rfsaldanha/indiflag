@@ -3,21 +3,10 @@ check_entropy <- function(x) {
   freqs <- table(x)
 
   # Shannon entropy
-  res <- round(-sum(freqs * log2(freqs), na.rm = TRUE), 2)
+  #res <- round(-sum(freqs * log2(freqs), na.rm = TRUE), 2)
+  res <- round(posterior::entropy(x = x), 2)
 
-  if (res >= .9) {
-    result <- list(
-      test = "entropy",
-      flag = "red",
-      message = glue::glue("The entropy is too high: {res}")
-    )
-  } else if (res >= .8 & res < 9) {
-    result <- list(
-      test = "entropy",
-      flag = "yellow",
-      message = glue::glue("The entropy is high: {res}")
-    )
-  } else if (res <= .1) {
+  if (res <= .1) {
     result <- list(
       test = "entropy",
       flag = "red",
@@ -33,7 +22,7 @@ check_entropy <- function(x) {
     result <- list(
       test = "entropy",
       flag = "green",
-      message = "The entropy is {res}"
+      message = glue::glue("The entropy is {res}")
     )
   }
 
